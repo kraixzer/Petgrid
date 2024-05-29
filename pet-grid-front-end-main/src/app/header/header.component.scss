@@ -1,0 +1,41 @@
+
+
+
+
+
+  
+.dropdown {
+    position: relative;
+}
+
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    top: 46px;
+    left: 0;
+    background: var(--bg-color);
+    min-width: 24px;
+    border-top: 3px solid #ccc;
+    border-radius: 0 0 3px 3px;
+    animation: slideUp .3s;
+}
+
+.dropdown-item {
+    padding: 10px;
+}
+
+.dropdown-menu li:hover {
+    background: var(--hover-bg-color);
+}
+
+.dropdown-item {
+    display: none;
+}
+
+.dropdown-menu:hover .dropdown-item {
+    display: block;
+}   
+
+
+    

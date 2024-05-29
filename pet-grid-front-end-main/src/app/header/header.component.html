@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Petgrid</a>
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" routerLink="/"
+                >Home <span class="sr-only">(current)</span></a
+            >
+            <a class="nav-item nav-link" routerLink="/dogs">Dogs</a>
+            <a class="nav-item nav-link" routerLink="/cats">Cats</a>
+            <a class="nav-item nav-link" routerLink="/horses">Horses</a>
+
+            <ul>
+                <li class="nav-item dropdown-menu">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown-menu"
+                        routerLink="/admin"
+                        >Admin</a
+                    >
+
+                    <a class="dropdown-item" routerLink="/admin/new"
+                        >New Animal</a
+                    >
+                    <a class="dropdown-item" routerLink="/admin/edit"
+                        >Edit Animal</a
+                    >
+                    <a class="dropdown-item" routerLink="/admin/breeds"
+                        >Breeds</a
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

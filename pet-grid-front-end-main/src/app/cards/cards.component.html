@@ -1,0 +1,15 @@
+
+
+<mat-card class="breed-card" *ngFor="let animal of animals">
+    <mat-card-header>{{animal.animal_name}}</mat-card-header>
+    <mat-card-content>{{animal.animal_description}}</mat-card-content>
+    <img
+        mat-card-image
+        src='{{"https://pet-grid.s3.ap-south-1.amazonaws.com/" + animal.animal_photo}}' alt="animal.animal_name"
+    />
+
+    <mat-card-actions>
+        <button mat-button (click)="goToLink(animal.breed_id.breed_wiki_link)">Checkout Breed Wiki Page</button>
+        <button mat-button (click)="goToLink(animal.animal_wiki_link)">Checkout Wiki Page</button>
+    </mat-card-actions>
+</mat-card>

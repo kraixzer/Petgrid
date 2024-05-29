@@ -1,0 +1,187 @@
+<div class="container">
+    <h1>Create new Animal</h1>
+    <form class="new-animal-form">
+        <mat-form-field class="animal-breed">
+            <mat-label>Select the Animal Parent Breed</mat-label>
+            <mat-select
+                [(ngModel)]="selected_breed"
+                name="selected_breed"
+                (selectionChange)="breedChanged($event)"
+            >
+                <mat-option
+                    *ngFor="let breed of all_breeds"
+                    [value]="breed.breed_id"
+                    >{{ breed.breed_name }}</mat-option
+                >
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="animal-name">
+            <mat-label>Animal Name</mat-label>
+            <input
+                type="text"
+                matInput
+                [(ngModel)]="animal_name"
+                #animal_n
+                name="animal_name"
+                maxlength="256"
+                placeholder="Please Enter the Animal's Name"
+            />
+            <mat-hint align="start"
+                >Use the Universal name of the Animal</mat-hint
+            >
+            <mat-hint align="end">{{ animal_n.value.length }} / 256</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="animal-wiki-link">
+            <mat-label>Animal WIKI Link</mat-label>
+            <input
+                type="url"
+                name="animal_wiki_link"
+                [(ngModel)]="animal_wiki_link"
+                matInput
+                #animal_w_lnk
+                placeholder="Please Enter the Animal's Correct Wiki Link"
+            />
+            <mat-hint align="start"
+                >Please choose the correct WIKI Link</mat-hint
+            >
+        </mat-form-field>
+
+        <mat-form-field class="animal-description">
+            <mat-label>Animal Description</mat-label>
+            <input
+                type="text"
+                name="animal_description"
+                [(ngModel)]="animal_description"
+                matInput
+                #animal_d
+                maxlength="500"
+                placeholder="Please Enter the Animal's Description"
+            />
+            <mat-hint align="start"
+                >You can use the description provided in the WIKI Page</mat-hint
+            >
+            <mat-hint align="end">{{ animal_d.value.length }} / 500</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="animal-official-name">
+            <mat-label>Animal Official Name</mat-label>
+            <input
+                type="text"
+                matInput
+                name="animal_official_name"
+                [(ngModel)]="animal_official_name"
+                #animal_of_na
+                maxlength="256"
+                placeholder="Please Enter the Animal's Official Name"
+            />
+            <mat-hint align="start"
+                >You can use the Official Name provided in the WIKI
+                Page</mat-hint
+            >
+            <mat-hint align="end"
+                >{{ animal_of_na.value.length }} / 256</mat-hint
+            >
+        </mat-form-field>
+
+        <mat-form-field class="animal-other-names">
+            <mat-label>Animal Other Names</mat-label>
+            <input
+                type="text"
+                matInput
+                name="animal_other_names"
+                [(ngModel)]="animal_other_names"
+                #animal_ot_na
+                maxlength="500"
+                placeholder="Please Enter the Animal's Other Popular Names"
+            />
+            <mat-hint align="start"
+                >You can insert multiple common names by separating them by a
+                comma.</mat-hint
+            >
+            <mat-hint align="end"
+                >{{ animal_ot_na.value.length }} / 500</mat-hint
+            >
+        </mat-form-field>
+
+        <mat-form-field class="animal-origin">
+            <mat-label>Animal Origin</mat-label>
+            <input
+                type="text"
+                matInput
+                name="animal_origin"
+                [(ngModel)]="animal_origin"
+                #animal_or
+                maxlength="500"
+                placeholder="Please Enter the Animal's Origin"
+            />
+            <mat-hint align="start"
+                >Please enter the Animal's original origin.</mat-hint
+            >
+            <mat-hint align="end">{{ animal_or.value.length }} / 500</mat-hint>
+        </mat-form-field>
+
+        <div
+            class="row"
+            *ngIf="!uploaded_file"
+            style="margin: 20px; padding: 20px"
+        >
+            <div
+                class="fileupload"
+                DragDropFile
+                (click)="fileField.click()"
+                (fileDropped)="uploadLogo($event)"
+            >
+                <span class="ddinfo">Choose a file or drag here</span>
+                <input
+                    type="file"
+                    accept=".png"
+                    name="job_d"
+                    #fileField
+                    (change)="uploadLogo($event)"
+                    hidden
+                />
+            </div>
+            <div *ngFor="let file of uploaded_file; let i = index">
+                <div style="text-align: center">
+                    <p>File Selected: {{ file.name }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="row"
+            *ngIf="uploaded_file"
+            style="margin: 20px; padding: 20px"
+        >
+            <img id="blah" [src]="selected_file_src" alt="Your selected" />
+        </div>
+
+        <button
+            mat-raised-button
+            color="accent"
+            (click)="openDialogForCharacteristics('250ms', '250ms')"
+        >
+            Add Animal Characteristics
+        </button>
+        <button
+            mat-raised-button
+            color="accent"
+            (click)="openDialogForSpecifics('250ms', '250ms')"
+        >
+            Add Animal Specifics
+        </button>
+        <button mat-raised-button color="accent" (click)="submit()">
+            SUBMIT
+        </button>
+        <button
+            class="retry"
+            mat-raised-button
+            color="accent"
+            (click)="submit()"
+        >
+            RETRY
+        </button>
+    </form>
+</div>

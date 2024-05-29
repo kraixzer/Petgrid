@@ -1,0 +1,87 @@
+<div class="container">
+    <div>
+        <h1>Create New Breed</h1>
+
+        <form class="new-breed-form">
+            <mat-form-field class="animal-breed">
+                <mat-label>Enter Breed Name</mat-label>
+
+                <input
+                    type="text"
+                    matInput
+                    [(ngModel)]="breed_name"
+                    #breed_n
+                    name="breed_name"
+                    maxlength="256"
+                    placeholder="Please Enter the Breed's Name"
+                />
+                <mat-hint align="start"
+                    >Use the Universal name of the Breed</mat-hint
+                >
+                <mat-hint align="end"
+                    >{{ breed_n.value.length }} / 256</mat-hint
+                >
+            </mat-form-field>
+
+            <mat-form-field class="breed-wiki-link">
+                <mat-label>Breed WIKI Link</mat-label>
+                <input
+                    type="url"
+                    matInput
+                    [(ngModel)]="breed_wiki_link"
+                    name="breed_wiki_link"
+                    #breed_w_lnk
+                    placeholder="Please Enter the Breed's Correct Wiki Link"
+                />
+                <mat-hint align="start"
+                    >Please choose the correct WIKI Link</mat-hint
+                >
+            </mat-form-field>
+
+            <button mat-raised-button color="accent" (click)="submit()">
+                SUBMIT
+            </button>
+            <button
+                class="retry"
+                mat-raised-button
+                color="accent"
+                (click)="submit()"
+                *ngIf="has_clicked_submit"
+            >
+                RETRY
+            </button>
+        </form>
+    </div>
+
+    <div>
+        <h1>List of Breeds Available</h1>
+
+
+        <table mat-table [dataSource]="list_of_breeds" class="mat-elevation-z8"
+        matSort matSortActive="breed_id" matSortDisableClear matSortDirection="asc"
+        >
+
+            <!-- Breed ID Column -->
+            <ng-container matColumnDef="breed_id">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.breed_id}} </td>
+            </ng-container>
+
+            <!-- Breed Name Column -->
+            <ng-container matColumnDef="breed_name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.breed_name}} </td>
+            </ng-container>
+
+            <!-- Breed WIKI Link Column -->
+            <ng-container matColumnDef="breed_wiki_link">
+              <th mat-header-cell *matHeaderCellDef> WIKI Link </th>
+              <td mat-cell *matCellDef="let element" (click)="onWikiClick(element)"> {{element.breed_wiki_link}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="breed_table_columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: breed_table_columns;"></tr>
+          </table>
+    </div>
+    <mat-paginator #paginator [length]="breedResultsLength" [pageSize]="3" showFirstLastButtons [pageSizeOptions]="[3, 6, 9]" ></mat-paginator>
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+    <mat-dialog-content>
+        <h1 style="margin: 20px; padding: 5px">
+            {{data.title}}
+        </h1>
+        <form class="new-animal-form" style="margin: 20px; padding: 5px">
+            <mat-form-field class="animal-characteristics-name">
+                <mat-label>{{data.title}} Name</mat-label>
+                <input
+                    type="text"
+                    matInput
+                    [(ngModel)]="characteristics_name"
+                    #cha_name
+                    name="characteristics_name"
+                    maxlength="256"
+                    placeholder="Please Enter the Animal's Characteristics Name"
+                />
+                <mat-hint align="end"
+                    >{{ cha_name.value.length }} / 256</mat-hint
+                >
+            </mat-form-field>
+
+            <mat-form-field class="animal-characteristics-value">
+                <mat-label>{{data.title}} Value</mat-label>
+                <input
+                    type="text"
+                    matInput
+                    [(ngModel)]="characteristics_value"
+                    #cha_value
+                    name="characteristics_value"
+                    maxlength="256"
+                    placeholder="Please Enter the Animal's Characteristics Value"
+                />
+                <mat-hint align="end"
+                    >{{ cha_value.value.length }} / 256</mat-hint
+                >
+            </mat-form-field>
+
+
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-raised-button color="accent" (click)="onSave()">
+            Add {{data.title}}
+        </button>
+    </mat-dialog-actions>
+</div>

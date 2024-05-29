@@ -1,0 +1,8 @@
+export enum PRODUCT_CATEGORY {
+    TOY = "TOY",
+    FOOD = "FOOD",
+    TREATS = "TREATS",
+    MEDICAL = "MEDICAL",
+    BATHING_ITEMS = "BATHING_ITEMS",
+    OTHERS = "OTHERS"
+}

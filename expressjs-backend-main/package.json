@@ -1,0 +1,23 @@
+{
+  "name": "expressjs-backend",
+  "version": "0.0.1",
+  "description": "simple web server",
+  "main": "index.js",
+  "scripts": {
+    "start":"nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetGrid/expressjs-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PetGrid/expressjs-backend/issues"
+  },
+  "homepage": "https://github.com/PetGrid/expressjs-backend#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
